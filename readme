@@ -1,2 +1,6 @@
+Adding and installing dependencies for a project, multiple automation setup 
+Start on: main.py
+
+
 ## add git venv
 pip install GitPython
