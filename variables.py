@@ -135,13 +135,13 @@ def template_docker_compose_local_server(f_name, f_port_s, f_port_v):
       - {f_port_s}:80
       - {f_port_v}:9001
     volumes:
-      - /var/www/html/sigen/{f_name}:/var/www/html
-      - /var/www/html/sigen/{f_name}/.deploy/.local/server.conf:/etc/nginx/conf.d/server.conf
-      - /var/www/html/sigen/{f_name}/.deploy/.local/20-xdebug.ini:/etc/php/7.1/fpm/conf.d/20-xdebug.ini
+      - /var/www/html/{f_name}:/var/www/html
+      - /var/www/html/{f_name}/.deploy/.local/server.conf:/etc/nginx/conf.d/server.conf
+      - /var/www/html/{f_name}/.deploy/.local/20-xdebug.ini:/etc/php/7.1/fpm/conf.d/20-xdebug.ini
     working_dir: /var/www/html/
     env_file:
-      - /var/www/html/sigen/.deploy/env_common
-      - /var/www/html/sigen/{f_name}/.deploy/.local/.env.local
+      - /var/www/html/.deploy/env_common
+      - /var/www/html/{f_name}/.deploy/.local/.env.local
       
 """
     return template
@@ -159,13 +159,13 @@ def template_docker_compose_local_transact(f_name, f_port_s, f_port_v):
       - {f_port_s}:80
       - {f_port_v}:9001
     volumes:
-      - /var/www/html/sigen/transact:/var/www/html
-      - /var/www/html/sigen/transact/.deploy/.local/{f_name}/server.conf:/etc/nginx/conf.d/server.conf
-      - /var/www/html/sigen/transact/.deploy/.local/20-xdebug.ini:/etc/php/7.1/fpm/conf.d/20-xdebug.ini
+      - /var/www/html/transact:/var/www/html
+      - /var/www/html/transact/.deploy/.local/{f_name}/server.conf:/etc/nginx/conf.d/server.conf
+      - /var/www/html/transact/.deploy/.local/20-xdebug.ini:/etc/php/7.1/fpm/conf.d/20-xdebug.ini
     working_dir: /var/www/html/.deploy/.local/{f_name}
     env_file:
-      - /var/www/html/sigen/.deploy/env_common
-      - /var/www/html/sigen/transact/.deploy/.local/{f_name}/.env.local
+      - /var/www/html/.deploy/env_common
+      - /var/www/html/transact/.deploy/.local/{f_name}/.env.local
       
 """
     return template
